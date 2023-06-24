@@ -20,22 +20,20 @@ def main():
         command_number = input('\nВведите номер команды: ')
 
         if command_number == '1':
-            # title = pyip.inputStr(prompt='Введите заголовок заметки (по умолчанию "Новая заметка"): ',
-            #                       default='Новая заметка')
-            # # title = input('Введите заголовок заметки: ')
             print('Введите заголовок заметки (оставьте пустым для значения "Новая заметка"):')
             title = input()
             if title.strip() == '':
                title = 'Новая заметка'
             body = input('Введите текст заметки: ')
             manager.add(title, body)
-            print('Заметка успешно добавлена')
+            # print('Заметка успешно добавлена')
         elif command_number == '2':
             # Проверяем наличие заметок
             if manager.count == 0:
                 print("Заметок не найдено")
                 continue
-            manager.show()
+            # manager.show()
+            manager.showshort()
         elif command_number == '3':
             # Проверяем наличие заметок
             if manager.count == 0:

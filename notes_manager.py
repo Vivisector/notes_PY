@@ -31,6 +31,7 @@ class NotesManager:
         note = Note(id, title, body)
         self.notes.append(note)
         self.save()
+        print(f'Заметка {id} успешно добавлена')
     
     def show(self):
         if not self.notes:
@@ -61,7 +62,12 @@ class NotesManager:
             print('Заметок не найдено')
             # continue
         self.notes.remove(note)
+        self.renumber_notes()  # перенумерация заметок
         self.save()
+    
+    def renumber_notes(self):
+        for i, note in enumerate(self.notes, start=1):
+            note.id = i
 
     def get_note_by_id(self, id):
         for note in self.notes:
