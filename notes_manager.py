@@ -40,6 +40,13 @@ class NotesManager:
             for note in self.notes:
                 print(f'{note.id}. {note.title}\n{note.body}\n{note.timestamp}\n')
 
+    def showshort(self):
+        if not self.notes:
+            print('Заметок не найдено')
+        else:
+            for note in self.notes:
+                print(f'{note.id}. {note.title}')
+
     def edit(self, id, title, body):
         note = self.get_note_by_id(id)
         if not self.notes:

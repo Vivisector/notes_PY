@@ -1,15 +1,19 @@
 from notes_manager import NotesManager
 
+def main_menu(manager):
+    print("\nДоступные команды:")
+    print("1. Создать новую заметку")
+    print("2. Просмотреть все заметки")
+    print("3. Изменить существующую заметку")
+    print("4. Удалить заметку")
+    print("5. Выход из программы")
+
+
 def main():
     manager = NotesManager()
 
     while True:
-        print("\nДоступные команды:")
-        print("1. Создать новую заметку")
-        print("2. Просмотреть все заметки")
-        print("3. Изменить существующую заметку")
-        print("4. Удалить заметку")
-        print("5. Выход из программы")
+        main_menu(manager)
 
         command_number = input('\nВведите номер команды: ')
 
@@ -29,6 +33,9 @@ def main():
             if manager.count == 0:
                 print("Заметок не найдено")
                 continue
+            elif manager.count > 0:
+                print("\nИмеющиеся заметки:")
+                manager.showshort()
             id = int(input('Введите номер редактируемой заметки: '))
             if manager.get_note_by_id(id) is None:
                 print('Такой заметки нет')
@@ -43,6 +50,9 @@ def main():
             if manager.count == 0:
                 print("Заметок не найдено")
                 continue
+            elif manager.count > 0:
+                print("\nИмеющиеся заметки:")
+                manager.showshort()
             id = int(input('Введите номер удаляемой заметки: '))
             if manager.get_note_by_id(id) is None:
                 print('Такой заметки нет')
