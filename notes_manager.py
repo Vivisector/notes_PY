@@ -47,6 +47,30 @@ class NotesManager:
         else:
             for note in self.notes:
                 print(f'{note.id}. {note.title}')
+            print("\nДействия:")
+            print("1. Прочитать заметку")
+            print("2. Вернуться в главное меню")
+        
+            action = input("Выберите действие: ")
+            if action == '1':
+                note_id = int(input("Введите номер заметки: "))
+                note = self.get_note_by_id(note_id)
+    
+                if note:
+                    print(f'\nЗаметка {note.id}')
+                    print(f'Заголовок: {note.title}')
+                    print(f'Текст: {note.body}')
+                    # print(f'Время создания: {note.timestamp}\n')
+                    print(f'Время создания: {note.timestamp.strftime("%Y-%m-%d %H:%M")}\n')
+                else:
+                    print("Заметка с таким номером не найдена")
+
+    def showshort_noDialog(self):
+        if not self.notes:
+            print('Заметок не найдено')
+        else:
+            for note in self.notes:
+                print(f'{note.id}. {note.title}')
 
     def edit(self, id, title, body):
         note = self.get_note_by_id(id)

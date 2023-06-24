@@ -41,7 +41,7 @@ def main():
                 continue
             elif manager.count > 0:
                 print("\nИмеющиеся заметки:")
-                manager.showshort()
+                manager.showshort_noDialog()
             id = int(input('Введите номер редактируемой заметки: '))
             if manager.get_note_by_id(id) is None:
                 print('Такой заметки нет')
@@ -58,7 +58,7 @@ def main():
                 continue
             elif manager.count > 0:
                 print("\nИмеющиеся заметки:")
-                manager.showshort()
+                manager.showshort_noDialog()
             id = int(input('Введите номер удаляемой заметки: '))
             if manager.get_note_by_id(id) is None:
                 print('Такой заметки нет')

@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug my program",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/com_line.py",
+            "args": ["arg1", "arg2"]
+        }
+    ]
+}

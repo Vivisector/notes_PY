@@ -24,9 +24,10 @@ class Note:
     def to_dict(self):
         if isinstance(self.timestamp, str):
             self.timestamp = datetime.datetime.fromisoformat(self.timestamp)
+        timestamp_str = self.timestamp.strftime('%Y-%m-%d %H:%M:%S')
         return {
             'id': self.id,
             'title': self.title,
             'body': self.body,
-            'timestamp': self.timestamp.isoformat()
-        }
+            'timestamp': timestamp_str
+    }
