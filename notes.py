@@ -19,14 +19,26 @@ def main():
             manager.add(title, body)
             print('Заметка успешно добавлена')
         elif command_number == '2':
+            # Проверяем наличие заметок
+            if manager.count == 0:
+                print("Заметок не найдено")
+                continue
             manager.show()
         elif command_number == '3':
+            # Проверяем наличие заметок
+            if manager.count == 0:
+                print("Заметок не найдено")
+                continue
             id = int(input('Введите номер заметки: '))
             title = input('Введите новый заголовок заметки: ')
             body = input('Введите новый текст заметки: ')
             manager.edit(id, title, body)
             print('Заметка успешно изменена')
         elif command_number == '4':
+            # Проверяем наличие заметок
+            if manager.count == 0:
+                print("Заметок не найдено")
+                continue
             id = int(input('Введите id заметки: '))
             manager.delete(id)
             print('Заметка успешно удалена')

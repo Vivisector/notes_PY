@@ -6,6 +6,7 @@ class NotesManager:
     def __init__(self, filename='notes.json'):
         self.filename = filename
         self.notes = []
+        self.count = 0
         self.load()
     
     def load(self):
@@ -13,6 +14,7 @@ class NotesManager:
             with open(self.filename) as f:
                 data = json.load(f)
                 self.notes = [Note(**note) for note in data['notes']]
+                self.count = len(data['notes']) # Сохраняем количество заметок
                 for note in self.notes:
                     if isinstance(note.timestamp, str):
                         note.timestamp = datetime.datetime.fromisoformat(note.timestamp)
@@ -31,24 +33,28 @@ class NotesManager:
         self.save()
     
     def show(self):
-        for note in self.notes:
-            print(f'{note.id}. {note.title}\n{note.body}\n{note.timestamp}\n')
+        if not self.notes:
+            print('Заметок не найдено')
+            # continue
+        else:
+            for note in self.notes:
+                print(f'{note.id}. {note.title}\n{note.body}\n{note.timestamp}\n')
 
     def edit(self, id, title, body):
         note = self.get_note_by_id(id)
-        if note:
+        if not self.notes:
+            print('Заметок не найдено')
+        else:
             note.edit(title, body)
             self.save()
-        else:
-            print('Заметка не найдена')
 
     def delete(self, id):
         note = self.get_note_by_id(id)
-        if note:
-            self.notes.remove(note)
-            self.save()
-        else:
-            print('Заметка не найдена')
+        if not note:
+            print('Заметок не найдено')
+            # continue
+        self.notes.remove(note)
+        self.save()
 
     def get_note_by_id(self, id):
         for note in self.notes:
