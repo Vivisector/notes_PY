@@ -1,3 +1,5 @@
+# import readline  # Добавляем модуль readline
+# import pyinputplus as pyip
 from notes_manager import NotesManager
 
 def main_menu(manager):
@@ -18,7 +20,13 @@ def main():
         command_number = input('\nВведите номер команды: ')
 
         if command_number == '1':
-            title = input('Введите заголовок заметки: ')
+            # title = pyip.inputStr(prompt='Введите заголовок заметки (по умолчанию "Новая заметка"): ',
+            #                       default='Новая заметка')
+            # # title = input('Введите заголовок заметки: ')
+            print('Введите заголовок заметки (оставьте пустым для значения "Новая заметка"):')
+            title = input()
+            if title.strip() == '':
+               title = 'Новая заметка'
             body = input('Введите текст заметки: ')
             manager.add(title, body)
             print('Заметка успешно добавлена')
