@@ -33,15 +33,17 @@ def main():
             title = input('Введите новый заголовок заметки: ')
             body = input('Введите новый текст заметки: ')
             manager.edit(id, title, body)
-            print('Заметка успешно изменена')
+            # print('Заметка успешно изменена')
+            print(f'Заметка {id} успешно изменена')
         elif command_number == '4':
             # Проверяем наличие заметок
             if manager.count == 0:
                 print("Заметок не найдено")
                 continue
-            id = int(input('Введите id заметки: '))
+            id = int(input('Введите номер заметки: '))
             manager.delete(id)
-            print('Заметка успешно удалена')
+            # print('Заметка успешно удалена')
+            print(f'Заметка {id} успешно удалена')
         elif command_number == '5':
             break
         else:
